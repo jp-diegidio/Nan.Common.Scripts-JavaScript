@@ -1,0 +1,17 @@
+{
+    "editor.formatOnPaste": true,
+    "editor.formatOnType": true,
+    "git.alwaysShowStagedChangesResourceGroup": true,
+    "git.suggestSmartCommit": false,
+    "terminal.integrated.shell.windows": "C:\\Program Files\\Git\\bin\\bash.exe",
+    "cSpell.language": "en-GB",
+    "cSpell.ignoreWords": [
+        "knockout",
+        "errored",
+        "isfunc",
+        "isobj",
+        "ko",
+        "ko's",
+        "templated"
+    ]
+}

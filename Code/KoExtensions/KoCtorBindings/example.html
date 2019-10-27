@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en-gb">
+<head>
+    <meta charset="utf-8">
+    <title>KoCtorBindings: Example</title>
+</head>
+<body>
+    <h1>KoCtorBindings: Example</h1>
+
+    <p><b>Change the text:</b></p>
+
+    <p>
+        <input type="text" data-bind="textInput: TestValue()">
+        <button data-bind="click: function () { testValue(''); }">Clear</button>
+        <span data-bind="text: testValue"></span>
+        <span data-bind="text: ko.Constructed(' -- 0')"></span>
+        <span data-bind="text: ko.Constructed(function () { return ' -- 1'; })"></span>
+    </p>
+
+    <div style="font-family: monospace" data-bind="logging: testValue"></div>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/knockout/3.5.0/knockout-debug.js"></script>
+    <script src="./koCtorBindings.js"></script>
+
+    <script>
+        (function ($global, $ko) {
+            "use strict";
+
+            // A custom binding handler defined after inclusion of KoCtorBindings:
+            $ko.CtorBindingHandler("logging", function (name) {
+                function Message(methodName, value) {
+                    return "Binding[" + name + "]: " + methodName +
+                        ": value = " + JSON.stringify(value);
+                }
+
+                this.init = function (element, valueAccessor) {
+                    var value = $ko.unwrap(valueAccessor());
+
+                    element.innerHTML += Message("INIT", value) + "<br>\r\n";
+                };
+
+                this.update = function (element, valueAccessor) {
+                    var value = $ko.unwrap(valueAccessor());
+
+                    element.innerHTML += Message("UPDATE", value) + "<br>\r\n";
+                };
+            });
+
+            function ViewModel() {
+                var _testValue = new $ko.observable("Initial");
+
+                this.testValue = _testValue;
+
+                this.TestValue = function () {
+                    return $ko.Constructed(_testValue);
+                };
+            }
+
+            var _viewModel = new ViewModel();
+
+            $global.addEventListener("load", function () {
+                $ko.applyBindings(_viewModel);
+            });
+        })(window, ko);
+    </script>
+</body>
+</html>

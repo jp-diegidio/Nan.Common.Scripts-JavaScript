@@ -1,0 +1,17 @@
+{
+    // https://go.microsoft.com/fwlink/?LinkId=733558
+    "version": "2.0.0",
+    "tasks": [
+        {
+            "label": "Publish: KoExtensions/KoCtorBindings",
+            "group": "build",
+            "type": "shell",
+            "command": "cp '${workspaceFolder}/Code/KoExtensions/KoCtorBindings/koCtorBindings.js' '${workspaceFolder}/Publish/KoExtensions/KoCtorBindings/1.0.0-beta/'",
+            "presentation": {
+                "reveal": "always",
+                "panel": "dedicated"
+            },
+            "problemMatcher": []
+        }
+    ]
+}

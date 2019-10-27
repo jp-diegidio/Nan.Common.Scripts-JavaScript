@@ -1,0 +1,12 @@
+{
+    // https://go.microsoft.com/fwlink/?linkid=830387
+    "version": "0.2.0",
+    "configurations": [
+        {
+            "name": "KoExtensions/KoCtorBindings/example (Chrome)",
+            "type": "chrome",
+            "request": "launch",
+            "file": "${workspaceFolder}/Code/KoExtensions/KoCtorBindings/example.html"
+        }
+    ]
+}
